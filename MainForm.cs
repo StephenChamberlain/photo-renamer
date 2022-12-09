@@ -90,10 +90,20 @@ namespace photo_renamer
             string originalName = Path.GetFileName(path);            
             var extension = originalName.Substring(originalName.LastIndexOf("."));
             var parentDirectory = Directory.GetParent(path);
-
             var newName = File.GetLastWriteTime(path).ToString(datetimePattern) + extension;
+            var newPath = Path.Combine(parentDirectory.FullName, newName);
+            int fileExistsCounter = 1;
 
-            return Path.Combine(parentDirectory.FullName, newName);
+            while(File.Exists(newPath))
+            {
+                // Apparently the file already exists; log in the process view and add 1 to the name
+                newName = File.GetLastWriteTime(path).ToString(datetimePattern) + "(" + fileExistsCounter + ")" + extension;
+                AddProcessViewItem(newPath, "Already exists, trying " + newName);
+                newPath = Path.Combine(parentDirectory.FullName, newName);
+                fileExistsCounter++;
+            }
+
+            return newPath;
         }
 
         private void AddProcessViewItem(String originalName, string newName)

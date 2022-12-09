@@ -95,9 +95,9 @@ namespace photo_renamer
             this.ProcessView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ProcessView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.ProcessView.HideSelection = false;
-            this.ProcessView.Location = new System.Drawing.Point(0, 161);
+            this.ProcessView.Location = new System.Drawing.Point(0, 146);
             this.ProcessView.Name = "ProcessView";
-            this.ProcessView.Size = new System.Drawing.Size(565, 289);
+            this.ProcessView.Size = new System.Drawing.Size(565, 304);
             this.ProcessView.TabIndex = 5;
             this.ProcessView.UseCompatibleStateImageBehavior = false;
             this.ProcessView.View = System.Windows.Forms.View.Details;
